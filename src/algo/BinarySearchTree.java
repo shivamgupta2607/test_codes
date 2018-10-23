@@ -49,14 +49,14 @@ public class BinarySearchTree {
 
 	public Node insertRecursive(Node r, int data)
 	{
-		Node t = new Node(data);
-		if(r==null)
-			return t;
-		else if(data<r.data)
-			r.left =  insertRecursive(r.left, data);
-		else
-			r.right =  insertRecursive(r.right, data);
-		return r;
+			Node t = new Node(data);
+			if(r==null)
+				return t;
+			else if(data<r.data)
+				r.left =  insertRecursive(r.left, data);
+			else
+				r.right =  insertRecursive(r.right, data);
+			return r;
 	}
 	
 	
@@ -260,7 +260,7 @@ public class BinarySearchTree {
 			if(t.r.left!=null)
 				q.add(new QueueObj(t.hd-1, r.left));
 			if(t.r.right!=null)
-				q.add(new QueueObj(t.hd=1, r.right));
+				q.add(new QueueObj(t.hd+1, r.right));
 		}
 		
 		for(Entry<Integer, Node> entry : topViewMap.entrySet())
@@ -347,6 +347,30 @@ public class BinarySearchTree {
 		}
 	}
 
+	public int depth(Node node)
+	{
+		if(node == null)
+			return 0;
+		int lDepth = depth(node.left);
+		int rDepth = depth(node.right);
+		return Math.max(lDepth, rDepth)+1;	
+	}
+	
+	
+	public int depth(Node node, int data, int level)
+	{
+		if(node==null)
+			return -1;
+		if(node.data == data)
+			return level;
+		int leftDepth = depth(node.left, data, level+1);
+		if(leftDepth!=-1)
+			return leftDepth;
+		else
+			return depth(node.right, data, level+1);
+	}
+	
+	
 	 
 	
 }

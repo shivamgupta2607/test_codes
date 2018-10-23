@@ -1,3 +1,4 @@
+import java.util.Stack;
 
 public class MaximumRectangularArea {
 
@@ -9,7 +10,10 @@ public class MaximumRectangularArea {
 	}
 	
 	public static void findmax(int a[]) {
-		
+		Stack<Integer> s = new Stack<>();
+		s.push(-1);
+		int i =0;
+		int maxArea = 0;
 		
 		
 	} 
